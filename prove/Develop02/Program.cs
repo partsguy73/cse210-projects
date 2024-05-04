@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 
 class Program
@@ -24,15 +25,20 @@ class Program
             switch (menuChoice)
             {
                 case 1:
-                    Console.Write("Enter your journal entry: ");
+                    //Console.Write("Enter your journal entry: ");
+                    string promptText = promptGenerator.GetRandomPrompt();
+                    Console.Write($"{promptText} ");
                     string newEntryText = Console.ReadLine(); 
-                    string promptText = promptGenerator.GetRandomPrompt();        
                     myJournal.AddEntry(new Entry(DateTime.Now, promptText, newEntryText));
                     break;
 
                 case 2:
                     myJournal.DisplayAll();
                     break;
+
+
+                    
+                // *** For the creative part, I added code to always save the journal entries as a .csv file. ***
 
                 case 3:
                     Console.Write("Enter the file name to save: ");

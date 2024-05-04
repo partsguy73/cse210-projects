@@ -21,22 +21,28 @@ public class Journal
 
     public void SaveToFile(string file)
     {
+        file = file + ".csv";
         using (StreamWriter writer = new StreamWriter(file))
         {
-            writer.WriteLine($"{entry._date} | {entry._promptText} | {entry._entryText}");
-
+            writer.WriteLine("Date,Prompt,Entry");
+             foreach (Entry entry in _entries)
+             {
+                writer.WriteLine($"{entry._date},{entry._promptText},{entry._entryText}");
+             }   
         }
         Console.WriteLine("Entries saved successfully!");
     }
 
     public void LoadFromFile(string file)
     {
+        file = file + ".csv";
         using (StreamReader reader = new StreamReader(file))
         {
             string line;
+            reader.ReadLine();
             while ((line = reader.ReadLine()) != null)
             {
-                string[] parts = line.Split(" | ");
+                string[] parts = line.Split(",");
                 if (parts.Length == 3)
                 {
                     DateTime date = DateTime.Parse(parts[0]);
