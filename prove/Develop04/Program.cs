@@ -15,15 +15,20 @@ class Program
             Console.Write("Select a choice from the menu: ");
             int menuChoice = int.Parse(Console.ReadLine());
 
+            Activity activity = null;
+
             switch (menuChoice)
             {
                 case 1:
+                    activity = new BreathingActivity("Breathing Activity", "A breathing exercise to help you relax", 1);
                     break;
 
                 case 2:
+                    activity = new ReflectingActivity("Reflecting", "Reflect on positive things that happened today", 1);
                     break;
 
                 case 3:
+                    activity = new ListingActivity("Listing", "List things you are grateful for", 1);
                     break;
 
                 case 4:
@@ -33,7 +38,9 @@ class Program
                 default:
                     Console.WriteLine("Invalid choice. Please enter a valid choice.");
                     break;
-            }   
+            } 
+
+            activity?.Run(); 
         }
     }
 }
