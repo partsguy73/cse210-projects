@@ -8,19 +8,23 @@ class BreathingActivity : Activity
 
     }
 
-    public void Run()
+    public override void Run()
     {
         base.DisplayStartMessage();
-        for (int i = 0; i < base._duration; i++)
+        Console.Clear();
+        Console.WriteLine("Get Ready...");
+        base.ShowSpinner(5);   
+        Console.WriteLine();
+
+        int cycles = _duration / 10;
+        for (int i = 0; i < cycles; i++)
         {
             Console.WriteLine("Breathe in...");
             base.ShowCountDown(5);
-            Console.WriteLine("Hold...");
+            Console.WriteLine("Now breathe out...");
             base.ShowCountDown(5);
-            Console.WriteLine("Breathe out...");
-            base.ShowCountDown(5);
-            Console.WriteLine("Hold...");
-            base.ShowCountDown(5);
+            Console.WriteLine();
         }
+        base.DisplayEndingMessage();
     }
 }
