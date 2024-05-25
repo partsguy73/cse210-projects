@@ -1,35 +1,34 @@
 using System;
 
-public class Goal
+public abstract class Goal
 {
-    private string _shortName;
-    private string _description;
-    private string _points;
+    protected string _name;
+    protected string _description;
+    protected int _points;
+    protected bool _isComplete;
 
     public Goal(string name, string description, int points)
     {
-        _shortName = name;
+        _name = name;
         _description = description;
         _points = points;
+        _isComplete = false;
     }
 
-    public void RecordEvent()
-    {
+    public abstract int RecordEvent();
 
+    public virtual string GetDetailsString()
+    {
+        return $"{_name} - {_description} - {(_isComplete ? "[x]" : "[ ]")}";
     }
 
-    public bool IsComplete()
+    public virtual string GetStringRepresentation()
     {
-
+        return $"{_name}|{_description}|{_points}|{_isComplete}";
     }
 
-    public string GetDetailsString()
+    public virtual void LoadDetails(string[] goalData)
     {
-
-    }
-
-    public string GetStringRepresentaion()
-    {
-
+        _isComplete = bool.Parse(goalData[3]);
     }
 }

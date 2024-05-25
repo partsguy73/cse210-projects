@@ -2,25 +2,19 @@ using System;
 
 public class SimpleGoal : Goal
 {
-    private bool _isComplete;
-
-    public SimpleGoal(string name, string description, int points)
+    public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
 
     }
 
-    public void RecordEvent()
+    public override int RecordEvent()
     {
-
+        _isComplete = true;
+        return _points;
     }
 
-    public bool IsComplete()
+    public override string GetStringRepresentation()
     {
-
-    }
-
-    public string GetStringRepresentaion()
-    {
-        
+        return base.GetStringRepresentation();
     }
 }
