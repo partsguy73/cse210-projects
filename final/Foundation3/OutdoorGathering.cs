@@ -11,7 +11,7 @@ public class OutdoorGathering : Event
 
     public override string GetFullDetails()
     {
-        return $"{base.GetFullDetails()}/nWeather: {_weatherStatement}";
+        return $"{base.GetFullDetails()}\nWeather: {_weatherStatement}";
     }
 }
 
